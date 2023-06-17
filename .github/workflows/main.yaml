@@ -25,9 +25,10 @@ jobs:
           path: nornir-aci
       - name: Setup Python
         uses: actions/setup-python@v3
-      - name: Install Dev dependencies
+      - name: Install nornir-aci
         run: |
-          python -m pip install poetry
-          python -m poetry install -C nornir-aci --without dev
+          curl -sSL https://install.python-poetry.org | python3 -
+          poetry config virtualenvs.create false && poetry config directory nornir-aci
+          poetry install --without dev
       - name: Run pytest
-        run: poetry run -C nornir-aci aci_deploy -h
+        run: poetry run aci_deploy -h
