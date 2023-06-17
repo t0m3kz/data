@@ -1,0 +1,6 @@
+---
+platform: apic
+role: controller
+merged:
+  file_apics1: from_group_apics_1
+  connection_options:

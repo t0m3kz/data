@@ -1,0 +1,8 @@
+---
+hostname: 44.163.64.22 # E1-ACILAB-SPINE-102-oob.net.allianz
+id: 102
+serial_number: SPINE102
+role: spine
+pod: 1
+oob_address: 44.163.64.5/23
+inb_address: 44.224.250.5/23

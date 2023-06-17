@@ -1,0 +1,6 @@
+---
+all:
+  children:
+    tenants:
+      hosts:
+        AZT_NTR:

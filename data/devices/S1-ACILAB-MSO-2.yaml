@@ -1,0 +1,5 @@
+---
+role: mso
+primary: false
+app_address: 44.163.64.42/mso
+se_address: 44.163.64.32/23

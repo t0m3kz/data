@@ -1,0 +1,41 @@
+---
+hostname: 44.171.64.27 # E2-ACILAB-LEAF-1201-oob.net.allianz
+id: 1201
+role: leaf
+pod: 2
+inband:
+oob:
+fexes:
+  - id: 130
+    interfaces:
+      - port: 1
+        policy_group: MGNT_ACP_1G_TR
+      - port: 2
+        policy_group: MGNT_ACP_1G_TR
+      - port: 3
+        policy_group: MGNT_ACP_1G_TR
+      - port: 4
+        policy_group: MGNT_ACP_1G_TR
+      - port: 5
+        policy_group: MGNT_ACP_1G_TR
+      - port: 6
+        policy_group: MGNT_ACP_1G_TR
+interfaces:
+  - port: 1
+    policy_group: APIC_ACP_10G
+  - port: 29
+    fex_id: 130
+  - port: 30
+    fex_id: 130
+  - port: 5
+    description: TO_DE-FRA-CMPFLXCH01-SWN1_EXT15
+    policy_group: CMPFLXCH01-SWN1_VPC_40G_TR
+  - port: 6
+    description: TO_DE-FRA-CMPFLXCH03-SWN1_EXT15
+    policy_group: CMPFLXCH03-SWN1_VPC_40G_TR
+  - port: 7
+    description: TO_DE-FRA-CMPFLXCH01-SWN2_EXT15
+    policy_group: CMPFLXCH01-SWN2_VPC_40G_TR
+  - port: 8
+    description: TO_DE-FRA-CMPFLXCH03-SWN2_EXT15
+    policy_group: CMPFLXCH03-SWN2_VPC_40G_TR

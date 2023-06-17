@@ -1,0 +1,25 @@
+# to run pre-commit on demand using below configuration:
+# pre-commit run --all-files
+
+# default_language_version:
+#   python: python3.9
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: check-ast
+      - id: end-of-file-fixer
+        exclude: ^tests
+      - id: trailing-whitespace
+        exclude: ^tests
+      - id: check-added-large-files
+        args: ["--maxkb=1000"]
+  # yamllint
+  - repo: local
+    hooks:
+      - id: yamllint
+        name: yamllint
+        language: system
+        entry: yamllint
+        exclude: ^tests/|^docs/|.*.py|.*\__pycache__/|gitignore|LICENSE|requirements|pre-commit-config|pylintrc|.*\.png$|.*\.j2$|.*.md|pyproject.toml|poetry.lock|\.github/.*|mkdocs.yml

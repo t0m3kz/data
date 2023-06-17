@@ -1,0 +1,19 @@
+---
+hostname: E2-ACILAB-LEAF-1001-130
+id: 130
+parent_id: 1001
+serial_number: LEAF1001-130
+role: fex
+interfaces:
+  - port: 1
+    policy_group: MGNT_ACP_1G_TR
+  - port: 2
+    policy_group: MGNT_ACP_1G_TR
+  - port: 3
+    policy_group: MGNT_ACP_1G_TR
+  - port: 4
+    policy_group: MGNT_ACP_1G_TR
+  - port: 5
+    policy_group: MGNT_ACP_1G_TR
+  - port: 6
+    policy_group: MGNT_ACP_1G_TR
