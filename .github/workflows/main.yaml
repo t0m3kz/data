@@ -21,7 +21,7 @@ jobs:
       - name: Check out code repo
         uses: actions/checkout@master
         with:
-          repository: orgname/reponame
+          repository: t0m3kz/nornir-aci
           token: ${{ secrets.CODE_PAT }}
       - name: Setup Python
         uses: actions/setup-python@v3
