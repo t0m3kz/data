@@ -31,4 +31,4 @@ jobs:
           python -m pip install poetry
           python -m poetry install -C nornir-aci
       - name: Run pytest
-        run: aci_deploy -h
+        run: python aci_deploy -h
