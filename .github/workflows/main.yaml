@@ -19,10 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Check out code repo
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
         with:
           repository: t0m3kz/nornir-aci
           token: ${{ secrets.CODE_PAT }}
+          path: nornir-aci
       - name: Setup Python
         uses: actions/setup-python@v3
       - name: Install Dev dependencies
