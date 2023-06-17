@@ -1,5 +1,5 @@
 ---
-hostname: 44.171.64.26 # E2-ACILAB-LEAF-1002-oob.net.allianz
+hostname: 10.2.0.26
 id: 1002
 role: leaf
 pod: 1

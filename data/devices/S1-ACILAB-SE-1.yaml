@@ -3,4 +3,4 @@ role: se
 primary: true
 platform: linux
 hostname: mastuazi.com
-address: 44.163.64.31
+address: 10.1.0.31

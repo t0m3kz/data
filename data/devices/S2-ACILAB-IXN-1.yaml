@@ -1,4 +1,4 @@
 ---
-hostname: 44.171.64.240
+hostname: 10.2.0.240
 role: ixn
-oob_address: 44.163.64.240/23
+oob_address: 10.1.0.240/23

@@ -1,7 +1,7 @@
 ---
 hostname: s2-apic-1.example.com
-primary: True
+primary: true
 port: 443
-oob_address: 44.171.64.4/23
+oob_address: 10.2.0.4/23
 inb_address: 44.224.250.4/23
-cimc_address: 44.171.64.7/23
+cimc_address: 10.2.0.7/23

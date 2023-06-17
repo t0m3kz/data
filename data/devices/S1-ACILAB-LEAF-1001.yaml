@@ -1,11 +1,11 @@
 ---
-hostname: 44.163.64.25 # E1-ACI-LAB-1001-oob.net.allianz
+hostname: 10.1.0.25
 id: 1001
 vpc: 500
 platform: apic
 serial_number: LEAF1001
 role: leaf
 pod: 1
-oob_address: 44.163.64.5/23
+oob_address: 10.1.0.5/23
 inb_address: 44.224.250.5/23
-funcy_data : DDDDD
+funcy_data: DDDDD

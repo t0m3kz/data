@@ -1,5 +1,5 @@
 ---
-hostname: 44.163.64.26 # E1-ACILAB-LEAF-1002-oob.net.allianz
+hostname: 10.1.0.26
 id: 1002
 vpc: 500
 serial_number: LEAF1002

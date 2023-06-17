@@ -1,7 +1,7 @@
 ---
 hostname: s1-apic-1.example.com
-primary: True
-oob_address: 44.163.64.4/23
+primary: true
+oob_address: 10.1.0.4/23
 inb_address: 44.224.250.4/23
-cimc_address: 44.163.64.7/23
+cimc_address: 10.1.0.7/23
 some_data: data

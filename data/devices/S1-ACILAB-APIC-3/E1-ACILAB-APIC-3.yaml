@@ -1,6 +1,6 @@
 ---
 hostname: s1-apic-3.example.com
 primary: false
-oob_address: 44.163.64.6/23
+oob_address: 10.1.0.6/23
 inb_address: 44.224.250.6/23
-cimc_address: 44.163.64.9/23
+cimc_address: 10.1.0.9/23
