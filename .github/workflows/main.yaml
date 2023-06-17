@@ -2,7 +2,6 @@
 name: Tests
 on:
   - push
-  - pull_request
 
 jobs:
   pre-commit:
@@ -12,7 +11,7 @@ jobs:
       - uses: actions/setup-python@v3
       - uses: pre-commit/action@v3.0.0
   implement:
-    name: Testing on Python ${{ matrix.python-version }} (${{ matrix.platform}})
+    name: Implementing change
     needs: pre-commit
     runs-on: ubuntu-latest
 
@@ -31,4 +30,4 @@ jobs:
           python -m pip install poetry
           python -m poetry install -C nornir-aci --without dev
       - name: Run pytest
-        run: python aci-nornir/aci_deploy -h
+        run: aci-nornir/aci_deploy -h
