@@ -53,9 +53,14 @@ jobs:
           poetry config virtualenvs.create false
           poetry install -C nornir-aci --without dev
       - name: Run impelementation
+        continue-on-error: true
+        id: config
         run: |
           poetry run -C nornir-aci aci_deploy -i data/lab_devices.yaml -v
           poetry run -C nornir-aci aci_deploy -i data/lab_tenants.yaml -v
+      - name: Restore config
+        if: ${{ failure() && steps.config.conclusion == 'failure' }}
+        run: echo "restore config"
   document:
     name: Update documentation
     needs: implement
