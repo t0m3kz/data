@@ -24,14 +24,6 @@ all:
           hosts:
             S1-ACILAB-IXN-1:
             S1-ACILAB-IXN-2:
-        S1_MSOS:
-          hosts:
-            S1-ACILAB-MSO-1:
-            S1-ACILAB-MSO-2:
-        S1_SES:
-          hosts:
-            S1-ACILAB-SE-1:
-            S1-ACILAB-SE-2:
     S2:
       children:
         S2_APICS:
@@ -66,10 +58,6 @@ all:
       children:
         S1_APICS:
         S2_APICS:
-    MSOS:
-      children:
-        S1_MSOS:
-        S2_MSOS:
     ACI_SWITCHES:
       children:
         S1_SPINES:
