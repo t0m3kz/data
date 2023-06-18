@@ -2,7 +2,7 @@
 inventory:
   plugin: YaYInventory
   options:
-    hostsfile: ./cisco/lab/tenants.yaml
+    hostsfile: ./data/lab/tenants.yaml
     hosts_folder: devices
     groups_folder: common
     merge_host: True,

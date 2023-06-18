@@ -30,7 +30,8 @@ jobs:
           poetry config virtualenvs.create false
           poetry install -C nornir-aci --without dev
       - name: Run impelementation
-        run: poetry run -C nornir-aci aci_validate -i ../data/lab_devices.yaml
+        run: |
+          poetry run -C nornir-aci aci_validate -i data/lab_devices.yaml
   implement:
     name: Validate data
     needs: validate
