@@ -1,4 +1,0 @@
----
-bridge_domain:
-  - name: E1_BD1
-  - name: E2_BD1

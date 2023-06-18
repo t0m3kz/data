@@ -1,5 +1,0 @@
----
-role: mso
-primary: true
-app_address: 10.1.0.41/mso
-se_address: 10.1.0.31/23
