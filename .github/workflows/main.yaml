@@ -33,7 +33,7 @@ jobs:
       - name: Run validation
         run: |
           poetry run -C nornir-aci aci_validate -i data/lab_devices.yaml
-  implement:
+  deploy:
     name: Implement change
     needs: validate
     runs-on: ubuntu-latest
@@ -53,18 +53,18 @@ jobs:
           poetry config virtualenvs.create false
           poetry install -C nornir-aci --without dev
       - name: Run impelementation
-        continue-on-error: true
-        id: config
+        id: implement
         run: |
           poetry run -C nornir-aci aci_deploy -i data/lab_devices.yaml -v
           poetry run -C nornir-aci aci_deploy -i data/lab_tenants.yaml -v
           exit 1
       - name: Restore config
-        if: ${{ failure() && steps.config.conclusion == 'failure' }}
+        continue-on-error: true
+        if: ${{ failure() && steps.implement.conclusion == 'failure' }}
         run: echo "restore config"
   document:
     name: Update documentation
-    needs: implement
+    needs: deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
