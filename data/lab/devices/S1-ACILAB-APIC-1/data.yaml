@@ -1,5 +1,5 @@
 ---
-# name: S1-ACILAB-APIC-01
+name: S1-ACILAB-APIC-01
 model: APIC-SERVER-L2
 role: controller
 serial: FCH00000001
