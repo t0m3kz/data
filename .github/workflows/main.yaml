@@ -5,13 +5,14 @@ on:
 
 jobs:
   pre-commit:
+    name: Check pre-commit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
       - uses: pre-commit/action@v3.0.0
   validate:
-    name: Validate input files
+    name: Validate data
     needs: pre-commit
     runs-on: ubuntu-latest
     steps:
@@ -29,11 +30,11 @@ jobs:
           curl -sSL https://install.python-poetry.org | python3 -
           poetry config virtualenvs.create false
           poetry install -C nornir-aci --without dev
-      - name: Run impelementation
+      - name: Run validation
         run: |
           poetry run -C nornir-aci aci_validate -i data/lab_devices.yaml
   implement:
-    name: Validate data
+    name: Implement change
     needs: validate
     runs-on: ubuntu-latest
     steps:
@@ -52,4 +53,27 @@ jobs:
           poetry config virtualenvs.create false
           poetry install -C nornir-aci --without dev
       - name: Run impelementation
-        run: poetry run -C nornir-aci aci_deploy -h
+        run: |
+          poetry run -C nornir-aci aci_deploy -i data/lab_devices.yaml -v
+          poetry run -C nornir-aci aci_deploy -i data/lab_tenants.yaml -v
+  document:
+    name: Update documentation
+    needs: implement
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check out code repo
+        uses: actions/checkout@v3
+        with:
+          repository: t0m3kz/nornir-aci
+          token: ${{ secrets.CODE_PAT }}
+          path: nornir-aci
+      - name: Setup Python
+        uses: actions/setup-python@v3
+      - name: Install nornir-aci
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          poetry config virtualenvs.create false
+          poetry install -C nornir-aci --without dev
+      - name: Generate documentation
+        run: poetry run -C nornir-aci aci_documentation -h
