@@ -1,0 +1,12 @@
+---
+name: S2-ACILAB-SPINE-102
+model: N9K-C9332C
+role: spine
+serial: FDO00000014
+node_id: 102
+pod: 1
+oob_ip: 10.2.0.22
+oob_mask: 24
+inb_ip: 10.11.0.102
+inb_mask: 24
+software: n9000-15.2(7g)

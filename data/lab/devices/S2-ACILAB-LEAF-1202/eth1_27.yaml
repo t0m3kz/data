@@ -1,0 +1,5 @@
+---
+interfaces:
+  - name: eth1/27
+    status: down
+    descr: NOT_USED

@@ -1,0 +1,13 @@
+---
+name: S1-ACILAB-LEAF-1202
+model: N9K-C9336C-FX2
+role: leaf
+serial: FDO00000004
+node_id: 1202
+pod: 2
+oob_ip: 10.1.0.28
+oob_mask: 24
+inb_ip: 10.11.0.124
+inb_mask: 24
+software: n9000-15.2(7g)
+vpc: 600

@@ -1,0 +1,13 @@
+---
+inventory:
+  plugin: YaYInventory
+  options:
+    hostsfile: ./cisco/lab/devices.yaml
+    hosts_folder: devices
+    groups_folder: common
+    merge_host: True,
+    merge_group: True,
+runner:
+  plugin: threaded
+  options:
+    num_workers: 200

@@ -1,0 +1,5 @@
+---
+interfaces:
+  - name: eth1/11
+    status: up
+    descr: "HP_Server_2"

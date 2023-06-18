@@ -1,0 +1,5 @@
+---
+interfaces:
+  - name: eth1/3/4
+    status: down
+    descr: "DESCRIPTION_TEST4"

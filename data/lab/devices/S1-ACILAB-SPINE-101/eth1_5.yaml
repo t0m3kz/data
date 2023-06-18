@@ -1,0 +1,5 @@
+---
+interfaces:
+  - name: eth1/5
+    status: up
+    descr: "DE-FRA-ACI-IPN-01"

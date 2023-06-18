@@ -1,0 +1,5 @@
+---
+interfaces:
+  - name: eth1/12
+    status: up
+    descr: "ACI-vBlock_N3K_1/49"

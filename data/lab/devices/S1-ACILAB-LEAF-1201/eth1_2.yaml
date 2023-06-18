@@ -1,0 +1,5 @@
+---
+interfaces:
+  - name: eth1/2
+    status: up
+    descr: "APIC-3"

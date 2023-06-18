@@ -1,0 +1,5 @@
+---
+interfaces:
+  - name: eth1/36
+    status: up
+    descr: NOT_USED

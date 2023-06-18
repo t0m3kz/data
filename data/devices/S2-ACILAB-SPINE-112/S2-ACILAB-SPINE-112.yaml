@@ -1,8 +1,0 @@
----
-hostname: 10.2.0.24
-id: 112
-serial_number: SPINE111
-role: spine
-pod: 2
-oob_address: 10.1.0.5/23
-inb_address: 44.224.250.5/23

@@ -1,0 +1,11 @@
+---
+all:
+  children:
+    S1:
+      hosts:
+        S1_TENANT_1:
+        S1_TENANT_2:
+    S2:
+      hosts:
+        S2_TENANT_1:
+        S2_TENANT_2:

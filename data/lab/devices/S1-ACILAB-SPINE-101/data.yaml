@@ -1,0 +1,12 @@
+---
+name: S1-ACILAB-SPINE-101
+model: N9K-C9336PQ
+role: spine
+serial: FDO00000005
+node_id: 101
+pod: 1
+oob_ip: 10.1.0.21
+oob_mask: 24
+inb_ip: 10.10.0.101
+inb_mask: 24
+software: n9000-14.2(6d)

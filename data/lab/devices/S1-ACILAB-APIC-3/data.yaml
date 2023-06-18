@@ -1,0 +1,12 @@
+---
+name: S1-ACILAB-APIC-03
+model: APIC-SERVER-L2
+role: controller
+serial: FCH00000003
+node_id: 3
+pod: 2
+oob_ip: 10.1.0.6
+oob_mask: 24
+inb_ip: 10.10.0.3
+inb_mask: 24
+software: 5.2(7g)

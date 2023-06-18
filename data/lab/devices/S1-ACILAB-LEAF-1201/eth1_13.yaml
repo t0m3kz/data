@@ -1,0 +1,5 @@
+---
+interfaces:
+  - name: eth1/13
+    status: up
+    descr: "dee1f2e11abs1 ge0 SN-CWA1906Q00G"

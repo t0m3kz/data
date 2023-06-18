@@ -1,0 +1,5 @@
+---
+interfaces:
+  - name: eth1/16
+    status: up
+    descr: "dee1f2e11abs1_ge0"

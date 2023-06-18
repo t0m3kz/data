@@ -1,0 +1,37 @@
+---
+all:
+  children:
+    S1:
+      children:
+        devices:
+          hosts:
+            S1-ACILAB-APIC-1:
+            S1-ACILAB-APIC-2:
+            S1-ACILAB-APIC-3:
+            S1-ACILAB-LEAF-1001:
+            S1-ACILAB-LEAF-1002:
+            S1-ACILAB-LEAF-1201:
+            S1-ACILAB-LEAF-1202:
+            S1-ACILAB-SPINE-101:
+            S1-ACILAB-SPINE-102:
+            S1-ACILAB-SPINE-111:
+            S1-ACILAB-SPINE-112:
+            S1-ACILAB-IXN-1:
+            S1-ACILAB-IXN-2:
+    S2:
+      children:
+        devices:
+          hosts:
+            S2-ACILAB-APIC-1:
+            S2-ACILAB-APIC-2:
+            S2-ACILAB-APIC-3:
+            S2-ACILAB-LEAF-1001:
+            S2-ACILAB-LEAF-1002:
+            S2-ACILAB-LEAF-1201:
+            S2-ACILAB-LEAF-1202:
+            S2-ACILAB-SPINE-101:
+            S2-ACILAB-SPINE-102:
+            S2-ACILAB-SPINE-111:
+            S2-ACILAB-SPINE-112:
+            S2-ACILAB-IXN-1:
+            S2-ACILAB-IXN-2:

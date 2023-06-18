@@ -1,0 +1,12 @@
+---
+name: S2-ACILAB-APIC-2
+model: APIC-SERVER-M3
+role: controller
+serial: WZP232300BN
+node_id: 2
+pod: 1
+oob_ip: 10.2.0.5
+oob_mask: 24
+inb_ip: 10.11.0.3
+inb_mask: 24
+software: 5.2(7g)

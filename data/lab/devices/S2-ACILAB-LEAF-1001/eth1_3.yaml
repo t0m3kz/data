@@ -1,0 +1,5 @@
+---
+interfaces:
+  - name: eth1/3
+    status: up
+    descr: "BREAKOUT_PORTS"

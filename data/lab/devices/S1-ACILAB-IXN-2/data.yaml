@@ -1,0 +1,6 @@
+---
+hostname: 10.1.0.241
+name: S1-ACILAB-IXN-2
+role: ixn
+pod: 2
+oob_address: 10.1.0.241/23

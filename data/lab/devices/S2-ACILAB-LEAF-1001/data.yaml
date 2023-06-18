@@ -1,0 +1,13 @@
+---
+name: S2-ACILAB-LEAF-1001
+model: N9K-C93180LC-EX
+role: leaf
+serial: FDO00000009
+node_id: 1001
+pod: 1
+oob_ip: 10.2.0.23
+oob_mask: 24
+inb_ip: 10.11.0.103
+inb_mask: 24
+software: n9000-15.2(7g)
+vpc: 500

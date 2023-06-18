@@ -1,0 +1,5 @@
+---
+hostname: 10.2.0.240
+name: S2-ACILAB-IXN-1
+role: ixn
+oob_address: 10.1.0.240/23
