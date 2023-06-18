@@ -56,7 +56,7 @@ jobs:
         continue-on-error: true
         id: config
         run: |
-          git diff --name-only
+          git diff HEAD^ HEAD --name-only
           poetry run -C nornir-aci aci_deploy -i data/lab_devices.yaml -v
           poetry run -C nornir-aci aci_deploy -i data/lab_tenants.yaml -v
       - name: Restore config
