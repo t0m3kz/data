@@ -1,3 +1,456 @@
 ---
+---
 name: TENANT_2
-role: tenant
+vrfs:
+  - name: PROD_VRF
+    contracts:
+      provider:
+        - PROD_VzAny_INTRA_S1_FW_CT
+      consumer:
+        - PROD_VzAny_INTRA_S1_FW_CT
+bridge_domains:
+  - name: PROD_FW_SERVICE_BD
+    arp_flooding: no
+    advertise_host_routes: yes
+    unknown_unicast: proxy
+    subnets:
+      - ip: 10.252.97.174/28
+        ip_dataplane_learning: enabled
+        scope: public
+        ctrl: nd
+  - name: PROD_VL80_S1_BD
+    description: EP_NTR_Pentest1_80
+    unicast_routing: no
+    subnets:
+      - ip: 10.17.227.129/26
+        ip_dataplane_learning: enabled
+        scope: public
+        ctrl: nd
+  - name: PROD_VL81_S1_BD
+    description: AD_NTR_Pentest1_81
+    unicast_routing: no
+    subnets:
+      - ip: 10.166.128.129/26
+        ip_dataplane_learning: enabled
+        scope: public
+        ctrl: nd
+  - name: PROD_VL2090_S1_BD
+    description: ID2_NTR_SMA_2090
+    unicast_routing: no
+    subnets:
+      - ip: 10.17.46.1/23
+        ip_dataplane_learning: enabled
+        scope: public
+        ctrl: nd
+  - name: PROD_VL85_S1_BD
+    description: AD_NTR_Pentest2_85
+    unicast_routing: no
+    subnets:
+      - ip: 10.166.227.193/26
+        ip_dataplane_learning: enabled
+        scope: public
+        ctrl: nd
+  - name: PROD_VL84_S1_BD
+    description: EP_NTR_Pentest2_84
+    unicast_routing: no
+    subnets:
+      - ip: 10.17.227.193/26
+        ip_dataplane_learning: enabled
+        scope: public
+        ctrl: nd
+application_profiles:
+  - name: PROD_AP
+    endpoint_groups:
+      - name: VL84_S1_EPG
+        physical_domains:
+          - ST_NTR_PHYSDOM
+        static_ports:
+          - vlan: 84
+            pod: 4
+            vpc1: 1683
+            vpc2: 1684
+            name: FP_L2_VPC_40G_NTR_IPG
+          - vlan: 84
+            pod: 2
+            vpc1: 1283
+            vpc2: 1284
+            name: VPC_40G_NTR_IPG
+          - vlan: 84
+            pod: 1
+            node: 441
+            module: 1
+            port: 7
+          - vlan: 84
+            pod: 2
+            vpc1: 1281
+            vpc2: 1282
+            name: _VPC_40G_NTR_IPG
+          - vlan: 84
+            pod: 2
+            vpc1: 1281
+            vpc2: 1282
+            name: VPC_40G_NTR_IPG
+          - vlan: 84
+            pod: 2
+            vpc1: 1281
+            vpc2: 1282
+            name: VPC_40G_NTR_IPG
+          - vlan: 84
+            pod: 2
+            vpc1: 1283
+            vpc2: 1284
+            name: VPC_40G_NTR_IPG
+        subnets:
+          - ip: 10.17.227.193/26
+            ip_dataplane_learning: enabled
+      - name: VL85_S1_EPG
+        physical_domains:
+          - ST_NTR_PHYSDOM
+        static_ports:
+          - vlan: 85
+            pod: 4
+            vpc1: 1683
+            vpc2: 1684
+            name: FP_L2_VPC_40G_NTR_IPG
+          - vlan: 85
+            pod: 2
+            vpc1: 1281
+            vpc2: 1282
+            name: _VPC_40G_NTR_IPG
+          - vlan: 85
+            pod: 2
+            vpc1: 1281
+            vpc2: 1282
+            name: VPC_40G_NTR_IPG
+          - vlan: 85
+            pod: 2
+            vpc1: 1283
+            vpc2: 1284
+            name: VPC_40G_NTR_IPG
+          - vlan: 85
+            pod: 2
+            vpc1: 1281
+            vpc2: 1282
+            name: VPC_40G_NTR_IPG
+          - vlan: 85
+            pod: 2
+            vpc1: 1283
+            vpc2: 1284
+            name: VPC_40G_NTR_IPG
+        subnets:
+          - ip: 10.166.227.193/26
+            ip_dataplane_learning: enabled
+      - name: VL80_S1_EPG
+        physical_domains:
+          - ST_NTR_PHYSDOM
+        static_ports:
+          - vlan: 80
+            pod: 4
+            vpc1: 1683
+            vpc2: 1684
+            name: FP_L2_VPC_40G_NTR_IPG
+          - vlan: 80
+            pod: 2
+            vpc1: 1283
+            vpc2: 1284
+            name: VPC_40G_NTR_IPG
+          - vlan: 80
+            pod: 1
+            node: 441
+            module: 1
+            port: 7
+          - vlan: 80
+            pod: 2
+            vpc1: 1283
+            vpc2: 1284
+            name: VPC_40G_NTR_IPG
+          - vlan: 80
+            pod: 2
+            vpc1: 1281
+            vpc2: 1282
+            name: VPC_40G_NTR_IPG
+          - vlan: 80
+            pod: 2
+            vpc1: 1281
+            vpc2: 1282
+            name: VPC_40G_NTR_IPG
+          - vlan: 80
+            pod: 2
+            vpc1: 1283
+            vpc2: 1284
+            name: VPC_40G_NTR_IPG
+          - vlan: 80
+            pod: 2
+            node: 461
+            module: 1
+            port: 7
+        subnets:
+          - ip: 10.17.227.129/26
+            ip_dataplane_learning: enabled
+      - name: VL81_S1_EPG
+        physical_domains:
+          - ST_NTR_PHYSDOM
+        static_ports:
+          - vlan: 81
+            pod: 4
+            vpc1: 1683
+            vpc2: 1684
+            name: FP_L2_VPC_40G_NTR_IPG
+          - vlan: 81
+            pod: 2
+            vpc1: 1281
+            vpc2: 1282
+            name: VPC_40G_NTR_IPG
+          - vlan: 81
+            pod: 2
+            vpc1: 1281
+            vpc2: 1282
+            name: _VPC_40G_NTR_IPG
+          - vlan: 81
+            pod: 2
+            vpc1: 1281
+            vpc2: 1282
+            name: VPC_40G_NTR_IPG
+          - vlan: 81
+            pod: 2
+            vpc1: 1283
+            vpc2: 1284
+            name: VPC_40G_NTR_IPG
+          - vlan: 81
+            pod: 2
+            vpc1: 1283
+            vpc2: 1284
+            name: VPC_40G_NTR_IPG
+        subnets:
+          - ip: 10.166.128.129/26
+            ip_dataplane_learning: enabled
+      - name: VL2090_S1_EPG
+        physical_domains:
+          - ST_NTR_PHYSDOM
+        static_ports:
+          - vlan: 2090
+            pod: 2
+            node: 1281
+            fex: 110
+            module: 1
+            port: 21
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1284
+            fex: 110
+            module: 1
+            port: 4
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1281
+            fex: 110
+            module: 1
+            port: 3
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1282
+            fex: 110
+            module: 1
+            port: 2
+            mode: untagged
+          - vlan: 2090
+            pod: 4
+            vpc1: 1683
+            vpc2: 1684
+            name: FP_L2_VPC_40G_NTR_IPG
+          - vlan: 2090
+            pod: 2
+            node: 1284
+            fex: 110
+            module: 1
+            port: 22
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1282
+            fex: 110
+            module: 1
+            port: 1
+            mode: untagged
+          - vlan: 2090
+            pod: 1
+            node: 441
+            module: 1
+            port: 7
+          - vlan: 2090
+            pod: 2
+            node: 1281
+            fex: 110
+            module: 1
+            port: 20
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1282
+            fex: 110
+            module: 1
+            port: 4
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 461
+            module: 1
+            port: 7
+          - vlan: 2090
+            pod: 2
+            node: 1283
+            fex: 110
+            module: 1
+            port: 21
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1283
+            fex: 110
+            module: 1
+            port: 3
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1284
+            fex: 110
+            module: 1
+            port: 2
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1284
+            fex: 110
+            module: 1
+            port: 1
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1283
+            fex: 110
+            module: 1
+            port: 22
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1284
+            fex: 110
+            module: 1
+            port: 3
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1282
+            fex: 110
+            module: 1
+            port: 20
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1283
+            fex: 110
+            module: 1
+            port: 2
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1281
+            fex: 110
+            module: 1
+            port: 22
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            vpc1: 1281
+            vpc2: 1282
+            name: VPC_40G_NTR_IPG
+          - vlan: 2090
+            pod: 2
+            vpc1: 1283
+            vpc2: 1284
+            name: VPC_40G_NTR_IPG
+          - vlan: 2090
+            pod: 2
+            node: 1283
+            fex: 110
+            module: 1
+            port: 20
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1281
+            fex: 110
+            module: 1
+            port: 1
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            vpc1: 1281
+            vpc2: 1282
+            name: VPC_40G_NTR_IPG
+          - vlan: 2090
+            pod: 2
+            node: 1281
+            fex: 110
+            module: 1
+            port: 2
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            vpc1: 1283
+            vpc2: 1284
+            name: VPC_40G_NTR_IPG
+          - vlan: 2090
+            pod: 2
+            node: 1283
+            fex: 110
+            module: 1
+            port: 4
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            vpc1: 1281
+            vpc2: 1282
+            name: _VPC_40G_NTR_IPG
+          - vlan: 2090
+            pod: 2
+            node: 1282
+            fex: 110
+            module: 1
+            port: 22
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1282
+            fex: 110
+            module: 1
+            port: 3
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1283
+            fex: 110
+            module: 1
+            port: 1
+            mode: untagged
+          - vlan: 2090
+            pod: 2
+            node: 1282
+            fex: 110
+            module: 1
+            port: 21
+            mode: untagged
+        subnets:
+          - ip: 10.17.46.1/23
+            ip_dataplane_learning: enabled
+contracts:
+  - name: PROD_VzAny_INTRA__FW_CT
+    description: VzAny Site-Local Contract with Service Graph
+    subjects:
+      - name: PERMIT-ANY_SUBJ
+        filters:
+          - filter: ANY_FLTR
+            directives: log

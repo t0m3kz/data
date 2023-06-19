@@ -81,4 +81,11 @@ jobs:
           poetry config virtualenvs.create false
           poetry install -C nornir-aci --without dev
       - name: Generate documentation
-        run: poetry run -C nornir-aci aci_documentation -h
+        run: poetry run -C nornir-aci aci_documentation -i data/lab_tenants.yaml -v
+      - name: Push to wiki
+        run: |
+          cd documentation
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Add changes" && git push
