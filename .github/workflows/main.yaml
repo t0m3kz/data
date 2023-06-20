@@ -73,6 +73,11 @@ jobs:
           repository: t0m3kz/nornir-aci
           token: ${{ secrets.CODE_PAT }}
           path: nornir-aci
+      - name: Checkout wiki code
+        uses: actions/checkout@v3
+        with:
+          repository: ${{github.repository}}.wiki
+          path: documentation
       - name: Setup Python
         uses: actions/setup-python@v3
       - name: Install nornir-aci
