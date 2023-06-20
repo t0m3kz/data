@@ -3,7 +3,7 @@ inventory:
   plugin: YaYInventory
   options:
     hostsfile: ./data/lab/tenants.yaml
-    hosts_folder: temants
+    hosts_folder: tenants
     groups_folder: common
     merge_host: True,
     merge_group: True,
