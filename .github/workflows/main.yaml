@@ -90,7 +90,7 @@ jobs:
       - name: Push to wiki
         run: |
           cd documentation
-          git config --local user.email "action@github.com"
+          git config --local user.email "tomek@mastuazi.com"
           git config --local user.name "GitHub Action"
           git add .
           git diff-index --quiet HEAD || git commit -m "Add changes" && git push
