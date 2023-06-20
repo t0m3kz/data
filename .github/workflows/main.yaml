@@ -27,9 +27,9 @@ jobs:
         uses: actions/setup-python@v3
       - name: Install nornir-aci
         run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          python -m poetry config virtualenvs.create false
-          python -m poetry install -C nornir-aci --without dev
+          pip install poetry
+          poetry config virtualenvs.create false
+          poetry install --without dev
       - name: Run validation
         run: |
           poetry run -C nornir-aci aci_validate -i data/lab_devices.yaml
@@ -49,9 +49,9 @@ jobs:
         uses: actions/setup-python@v3
       - name: Install nornir-aci
         run: |
-          curl -sSL https://install.python-poetry.org | python3 -
+          pip install poetry
           poetry config virtualenvs.create false
-          poetry install -C nornir-aci --without dev
+          poetry install --without dev
       - name: Run impelementation
         id: implement
         run: |
@@ -77,7 +77,7 @@ jobs:
         uses: actions/setup-python@v3
       - name: Install nornir-aci
         run: |
-          curl -sSL https://install.python-poetry.org | python3 -
+          pip install poetry
           poetry config virtualenvs.create false
           poetry install -C nornir-aci --without dev
       - name: Generate documentation
