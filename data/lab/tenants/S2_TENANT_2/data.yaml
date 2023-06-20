@@ -1,5 +1,4 @@
 ---
----
 name: TENANT_2
 vrfs:
   - name: PROD_VRF
