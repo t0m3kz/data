@@ -29,7 +29,7 @@ jobs:
         run: |
           pip install poetry
           poetry config virtualenvs.create false
-          poetry install --without dev
+          poetry install -C nornir-aci --without dev
       - name: Run validation
         run: |
           poetry run -C nornir-aci aci_validate -i data/lab_devices.yaml
@@ -51,7 +51,7 @@ jobs:
         run: |
           pip install poetry
           poetry config virtualenvs.create false
-          poetry install --without dev
+          poetry install -C nornir-aci --without dev
       - name: Run impelementation
         id: implement
         run: |
