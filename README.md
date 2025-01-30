@@ -57,6 +57,7 @@ Desired state files:
     * Enter a title and description for your pull request.
     * Click on the "Create pull request" button.
 5. Review and Merge
+    During PR pipeline will test the configuration and add comments about changes in the config.
     Once your pull request is created, it will be reviewed by your team. If everything looks good, the pull request will be merged into the main branch
     and deployed on the devices.
 
