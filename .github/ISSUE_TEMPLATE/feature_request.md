@@ -5,8 +5,6 @@ about: Propose a new feature or enhancement
 
 ### Environment
 
-- Nautobot version: <!-- Example: 1.2.0 -->
-
 <!--
     Describe in detail the new functionality you are proposing.
 -->
