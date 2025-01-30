@@ -1,5 +1,0 @@
----
-interfaces:
-  - name: eth1/30
-    status: up
-    descr: NOT_USED

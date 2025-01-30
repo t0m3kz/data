@@ -1,9 +1,0 @@
----
-name: S1-ACILAB-LEAF-1202-130
-parent_id: 1202
-fex_id: 130
-pod: 2
-role: fex
-model: N2K-C2348UPQ-10GE
-software: n9000-15.2(7g)
-serial: FOC00000002

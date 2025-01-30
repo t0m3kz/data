@@ -1,5 +1,0 @@
----
-interfaces:
-  - name: eth1/2
-    status: up
-    descr: "dee1f2e11abs1 ge0 SN-CWA1906Q00G"

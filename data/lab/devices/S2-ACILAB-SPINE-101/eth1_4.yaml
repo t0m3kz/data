@@ -1,5 +1,0 @@
----
-interfaces:
-  - name: eth1/4
-    status: up
-    descr: NOT_USED

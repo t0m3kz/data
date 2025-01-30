@@ -1,0 +1,48 @@
+name: PR workflow
+
+on: [pull_request]
+
+jobs:
+  comment-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check out code repo
+        uses: actions/checkout@v4
+        with:
+          repository: t0m3kz/vyos
+          token: ${{ secrets.TOKEN }}
+          path: vyos          
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Install vyos
+        run: |
+          pip install poetry yamllint
+          poetry config virtualenvs.create true
+          poetry install -C vyos --without dev
+      - name: Run test deployment
+        env:
+          VYOS_PASSWORD: ${{secrets.VYOS_PASSWORD}}
+        run: |
+          echo "Running test deployment"
+          poetry run -P vyos sync -i ./inventory.yaml -v -m -t       
+      - name: Read files content and create PR comment
+        uses: actions/github-script@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const files = fs.readdirSync('changes');
+            let content = '';
+            files.forEach(file => {
+              const fileContent = fs.readFileSync(`changes/${file}`, 'utf8');
+              content += `\n\n${fileContent}`;
+            });
+            const commentBody = `Hello! With this PR you'll apply these changes:\n\n${content}`;
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: commentBody
+            })

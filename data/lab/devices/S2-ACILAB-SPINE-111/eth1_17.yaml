@@ -1,5 +1,0 @@
----
-interfaces:
-  - name: eth1/17
-    status: up
-    descr: NOT_USED

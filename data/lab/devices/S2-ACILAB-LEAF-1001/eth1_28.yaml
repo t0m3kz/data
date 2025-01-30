@@ -1,5 +1,0 @@
----
-interfaces:
-  - name: eth1/28
-    status: down
-    descr: NOT_USED

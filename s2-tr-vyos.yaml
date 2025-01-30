@@ -1,0 +1,18 @@
+---
+asn: 65002
+routed_interface: eth1
+routed_ip: 10.0.3.2/24
+routed_gw: 10.0.3.1
+tunnel_ip: 192.168.0.2/31
+trunk_interface: eth2
+gateways:
+  - vlan: 200
+    gateway: 44.11.1.1/24
+  - vlan: 201
+    gateway: 44.11.2.1/24
+  - vlan: 202
+    gateway: 44.11.3.1/24
+  - vlan: 203
+    gateway: 10.7.3.1/25
+  - vlan: 204
+    gateway: 10.8.3.1/25

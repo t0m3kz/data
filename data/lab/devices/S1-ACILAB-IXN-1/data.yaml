@@ -1,6 +1,0 @@
----
-hostname: 10.1.0.240
-name: S1-ACILAB-IXN-1
-role: ixn
-pod: 1
-oob_address: 10.1.0.240/23

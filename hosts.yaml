@@ -1,0 +1,21 @@
+---
+s1-ntr-vyos:
+  hostname: 172.100.200.241
+  groups:
+    - site1
+    - vyos
+s1-tr-vyos:
+  hostname: 172.100.200.240
+  groups:
+    - site1
+    - vyos
+s2-ntr-vyos:
+  hostname: 172.100.200.246
+  groups:
+    - site2
+    - vyos
+s2-tr-vyos:
+  hostname: 172.100.200.245
+  groups:
+    - site2
+    - vyos

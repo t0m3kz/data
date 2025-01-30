@@ -1,5 +1,0 @@
----
-interfaces:
-  - name: eth1/19
-    status: down
-    descr: NOT_USED

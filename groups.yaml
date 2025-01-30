@@ -1,0 +1,16 @@
+---
+site1:
+  data:
+    ntp_servers:
+      - 10.252.1.1
+      - 10.252.1.2
+    site: s1
+site2:
+  data:
+    ntp_servers:
+      - 10.252.2.1
+      - 10.252.2.2
+    site: s2
+vyos:
+  port: 22
+  platform: vyos

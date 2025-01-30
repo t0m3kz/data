@@ -1,0 +1,16 @@
+---
+asn: 65012
+routed_interface: eth1
+routed_ip: 10.0.4.2/24
+routed_gw: 10.0.4.1
+tunnel_ip: 192.168.0.3/31
+trunk_interface: eth2
+gateways:
+  - vlan: 300
+    gateway: 44.11.4.1/24
+  - vlan: 301
+    gateway: 44.11.5.1/24
+  - vlan: 302
+    gateway: 44.11.6.1/24
+  - vlan: 303
+    gateway: 44.11.7.1/24

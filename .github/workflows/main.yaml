@@ -1,96 +1,74 @@
 ---
-name: Tests
+name: Deploy configuration
 on:
   - push
-
 jobs:
-  pre-commit:
-    name: Check pre-commit
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
-      - uses: pre-commit/action@v3.0.0
-  validate:
-    name: Validate data
-    needs: pre-commit
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Check out code repo
-        uses: actions/checkout@v3
-        with:
-          repository: t0m3kz/nornir-aci
-          token: ${{ secrets.CODE_PAT }}
-          path: nornir-aci
-      - name: Setup Python
-        uses: actions/setup-python@v3
-      - name: Install nornir-aci
-        run: |
-          pip install poetry
-          poetry config virtualenvs.create false
-          poetry install -C nornir-aci --without dev
-      - name: Run validation
-        run: |
-          poetry run -C nornir-aci aci_validate -i data/lab_devices.yaml
   deploy:
-    name: Implement change
-    needs: validate
+    name: Validate data
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Check out code repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          repository: t0m3kz/nornir-aci
-          token: ${{ secrets.CODE_PAT }}
-          path: nornir-aci
-      - name: Setup Python
-        uses: actions/setup-python@v3
-      - name: Install nornir-aci
+          repository: t0m3kz/vyos
+          token: ${{ secrets.TOKEN }}
+          path: vyos 
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: Install vyos
         run: |
-          pip install poetry
-          poetry config virtualenvs.create false
-          poetry install -C nornir-aci --without dev
-      - name: Run impelementation
+          pip install poetry yamllint
+          poetry config virtualenvs.create true
+          poetry install -C vyos --without dev
+      - name: Run yaml
+        run: |
+          echo "Running validation"
+          yamllint -d "{extends: default, ignore: [.github/, ./vyos/]}" .
+      - name: Run validation
+        env:
+          VYOS_PASSWORD: ${{secrets.VYOS_PASSWORD}}
+        run: |
+          echo "Running validation"
+          poetry run -P vyos validate -i ./inventory.yaml -v
+      - name: Run synchronization
+        if: ${{ github.ref == 'refs/heads/main' }}
+        env:
+          VYOS_PASSWORD: ${{secrets.VYOS_PASSWORD}}
         id: implement
         run: |
-          poetry run -C nornir-aci aci_deploy -i data/lab_devices.yaml -v
-          poetry run -C nornir-aci aci_deploy -i data/lab_tenants.yaml -v
-      - name: Restore config
+          echo "Running synchronization to NTE"
+          poetry run -P vyos sync -i ./inventory.yaml -v -m
+      - name: Archive nornir artifacts
         continue-on-error: true
         if: ${{ failure() && steps.implement.conclusion == 'failure' }}
-        run: echo "restore config"
-  document:
-    name: Update documentation
-    needs: deploy
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Check out code repo
-        uses: actions/checkout@v3
+        uses: actions/upload-artifact@v4
         with:
-          repository: t0m3kz/nornir-aci
-          token: ${{ secrets.CODE_PAT }}
-          path: nornir-aci
-      - name: Checkout wiki code
+          name: execution_logs
+          path: |
+            *.log
+      - name: Rollback config
+        continue-on-error: true
+        if: ${{ failure() && steps.implement.conclusion == 'failure' }}
+        run: |
+          echo "Rolling back config"
+      - name: Checkout wiki documentation
+        if: ${{ github.ref == 'refs/heads/main' }}
         uses: actions/checkout@v3
         with:
           repository: ${{github.repository}}.wiki
           path: documentation
-      - name: Setup Python
-        uses: actions/setup-python@v3
-      - name: Install nornir-aci
-        run: |
-          pip install poetry
-          poetry config virtualenvs.create false
-          poetry install -C nornir-aci --without dev
       - name: Generate documentation
-        run: poetry run -C nornir-aci aci_documentation -i data/lab_tenants.yaml -v
-      - name: Push to wiki
+        if: ${{ github.ref == 'refs/heads/main' }}
         run: |
-          cd documentation
-          git config --local user.email "tomek@mastuazi.com"
-          git config --local user.name "Tomek Zajac"
+          echo "Generating documentation"
+          poetry run -P vyos document -i ./inventory.yaml -v -m
+      - name: Push to wiki
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: |
+          cd docs
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add .
           git diff-index --quiet HEAD || git commit -m "Add changes" && git push

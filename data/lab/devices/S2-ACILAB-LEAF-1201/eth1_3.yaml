@@ -1,5 +1,0 @@
----
-interfaces:
-  - name: eth1/3
-    status: up
-    descr: "S2-ACILAB-APIC-3"
