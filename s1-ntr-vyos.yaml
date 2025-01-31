@@ -2,7 +2,7 @@
 asn: 65011
 routed_interface: eth1
 routed_ip: 10.0.2.2/24
-routed_gw: 10.7.2.1
+routed_gw: 10.0.2.1
 tunnel_ip: 192.168.0.1/31
 trunk_interface: eth2
 gateways:
@@ -20,3 +20,5 @@ gateways:
     gateway: 10.72.12.1/24
   - vlan: 306
     gateway: 10.72.19.1/24
+  - vlan: 307
+    gateway: 10.73.19.1/24

@@ -7,7 +7,7 @@ tunnel_ip: 192.168.0.2/31
 trunk_interface: eth2
 gateways:
   - vlan: 200
-    gateway: 44.11.1.255/24
+    gateway: 44.11.1.1/24
   - vlan: 201
     gateway: 44.11.2.1/24
   - vlan: 202
