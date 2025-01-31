@@ -16,3 +16,5 @@ gateways:
     gateway: 10.18.62.1/23
   - vlan: 204
     gateway: 10.19.66.1/23
+  - vlan: 205
+    gateway: 10.99.66.1/23
