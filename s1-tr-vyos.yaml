@@ -9,7 +9,7 @@ gateways:
   - vlan: 200
     gateway: 44.10.1.1/24
   - vlan: 201
-    gateway: 44.10.2.1/24
+    gateway: 44.10.2.255/24
   - vlan: 202
     gateway: 44.10.3.1/24
   - vlan: 203

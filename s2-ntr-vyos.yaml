@@ -2,7 +2,7 @@
 asn: 65012
 routed_interface: eth1
 routed_ip: 10.0.4.2/24
-routed_gw: 10.0.4.1
+routed_gw: 10.7.4.1
 tunnel_ip: 192.168.0.3/31
 trunk_interface: eth2
 gateways:
