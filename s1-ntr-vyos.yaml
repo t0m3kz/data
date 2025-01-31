@@ -20,3 +20,5 @@ gateways:
     gateway: 10.72.12.1/24
   - vlan: 306
     gateway: 10.72.19.1/24
+  - vlan: 307
+    gateway: 10.73.19.1/24
