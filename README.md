@@ -127,4 +127,3 @@ Edit respective desired state file and add / remove OpenVPN gateway.
 ```yaml
 vpn: yes or true or no or false
 ```
-
