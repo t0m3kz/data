@@ -27,26 +27,26 @@ jobs:
         run: |
           echo "Running test deployment"
           poetry run -P vyos sync -i ./inventory.yaml -v -m -t       
-- name: Read files content and create PR comment
-  uses: actions/github-script@v2
-  with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    script: |
-      const fs = require('fs');
-      const files = fs.readdirSync('changes');
-      let content = '';
-      if (files.length === 0) {
-        content = 'No changes will be applied';
-      } else {
-        files.forEach(file => {
-          const fileContent = fs.readFileSync(`changes/${file}`, 'utf8');
-          content += `\n\n${fileContent}`;
-        });
-      }
-      const commentBody = `Hello! With this PR you'll apply these changes:\n\n${content}`;
-      github.issues.createComment({
-        issue_number: context.issue.number,
-        owner: context.repo.owner,
-        repo: context.repo.repo,
-        body: commentBody
-      });
+      - name: Read files content and create PR comment
+        uses: actions/github-script@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const files = fs.readdirSync('changes');
+            let content = '';
+            if (files.length === 0) {
+              content = 'No changes will be applied';
+            } else {
+              files.forEach(file => {
+                const fileContent = fs.readFileSync(`changes/${file}`, 'utf8');
+                content += `\n\n${fileContent}`;
+              });
+            }
+            const commentBody = `Hello! With this PR you'll apply these changes:\n\n${content}`;
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: commentBody
+            });
