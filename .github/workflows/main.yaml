@@ -48,11 +48,6 @@ jobs:
           name: execution_logs
           path: |
             *.log
-      - name: Rollback config
-        continue-on-error: true
-        if: ${{ failure() && steps.implement.conclusion == 'failure' }}
-        run: |
-          echo "Rolling back config"
       - name: Checkout wiki documentation
         if: ${{ github.ref == 'refs/heads/main' }}
         uses: actions/checkout@v3
