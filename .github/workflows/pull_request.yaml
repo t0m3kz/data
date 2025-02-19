@@ -28,7 +28,7 @@ jobs:
           echo "Running test deployment"
           poetry run -P vyos sync -i ./inventory.yaml -v -m -t       
       - name: Read files content and create PR comment
-        uses: actions/github-script@v2
+        uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -44,7 +44,7 @@ jobs:
               });
             }
             const commentBody = `Hello! With this PR you'll apply these changes:\n\n${content}`;
-            github.issues.createComment({
+            github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
