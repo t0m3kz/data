@@ -14,7 +14,7 @@ jobs:
           repository: t0m3kz/vyos
           token: ${{ secrets.TOKEN }}
           path: vyos 
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
       - name: Install vyos
@@ -50,7 +50,7 @@ jobs:
             *.log
       - name: Checkout wiki documentation
         if: ${{ github.ref == 'refs/heads/main' }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ${{github.repository}}.wiki
           path: docs
