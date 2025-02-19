@@ -92,3 +92,39 @@ s1: # site name
       - 10.254.1.1 # NTP server IP
       - 10.254.1.2 # Another NTP server IP
 ```
+
+### Change/deploy mainframe connection
+
+Edit respective desired state file and add edit mainframe connection.
+Mainframe connection is using OSPF as dynamic routing protocol.
+
+```yaml
+mainframe:
+  area: 0 # area ID
+  vlan: 1000 # VLAN ID
+  router_ip: 192.168.100.1/24 # Router IP/Mask
+```
+
+### Change/deploy cloud connection
+
+Edit respective desired state file and add edit cloud connection.
+Cloud connection is using static routing to the cloud firewall.
+
+```yaml
+cloud:
+  vlan: 883 # VLAN ID
+  firewall_ip: 172.20.10.5 # Firewall IP
+  network: 172.20.10.1/24 # Network IP/Mask
+  subnets: # Subnets deployed in the public cloud
+    - 10.11.0.0/24 # Subnet IP/Mask in the public cloud
+    - 10.112.1.0/24 # Another Subnet IP/Mask in the public cloud
+```
+
+### Deploy/Remove OpenVPN gateway.
+
+Edit respective desired state file and add / remove OpenVPN gateway.
+
+```yaml
+vpn: yes or true or no or false
+```
+
