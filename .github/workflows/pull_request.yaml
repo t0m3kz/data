@@ -33,22 +33,28 @@ jobs:
           echo "Running test deployment"
           poetry run -P vyos sync -i ./inventory.yaml -v -m -t       
       - name: Read files content and create PR comment
-        uses: actions/github-script@v7
+        uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.TOKEN }}
+          github-token: ${{ secrets.ROBOT_TOKEN }}
           script: |
             const fs = require('fs');
-            const files = fs.readdirSync('changes');
+            const path = 'changes';
             let content = '';
-            if (files.length === 0) {
+            if (!fs.existsSync(path)) {
               content = 'No changes will be applied';
             } else {
-              files.forEach(file => {
-                const fileContent = fs.readFileSync(`changes/${file}`, 'utf8');
-                content += `\n\n${fileContent}`;
-              });
+              const files = fs.readdirSync(path);
+              if (files.length === 0) {
+                content = 'No changes will be applied';
+              } else {
+                content = 'With this PR you\'ll apply these changes:';
+                files.forEach(file => {
+                  const fileContent = fs.readFileSync(`${path}/${file}`, 'utf8');
+                  content += `\n\n${fileContent}`;
+                });
+              }
             }
-            const commentBody = `Hello! With this PR you'll apply these changes:\n\n${content}`;
+            const commentBody = `Hello! ${content}`;
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
