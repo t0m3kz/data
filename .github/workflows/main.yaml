@@ -26,7 +26,7 @@ jobs:
         run: |
           echo "Running validation"
           yamllint -d "{extends: default, ignore: [.github/, ./vyos/]}" \
-                   -d "{rules: {truthy: {allowed-values: ["true", "false", "yes", "no"]}}}" .
+                   -d "{rules: {truthy: {allowed-values: ['true', 'false', 'yes', 'no']}}}" .
       - name: Run validation
         env:
           VYOS_PASSWORD: ${{secrets.VYOS_PASSWORD}}
