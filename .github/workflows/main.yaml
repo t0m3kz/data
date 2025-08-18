@@ -7,9 +7,9 @@ jobs:
     name: Validate data
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Check out code repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: t0m3kz/vyos
           token: ${{ secrets.TOKEN }}
@@ -50,7 +50,7 @@ jobs:
             *.log
       - name: Checkout wiki documentation
         if: ${{ github.ref == 'refs/heads/main' }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: ${{github.repository}}.wiki
           path: docs
