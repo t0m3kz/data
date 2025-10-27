@@ -11,14 +11,14 @@ jobs:
   comment-pr:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Check out code repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: t0m3kz/vyos
           token: ${{ secrets.TOKEN }}
           path: vyos          
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.10"
       - name: Install vyos
@@ -33,7 +33,7 @@ jobs:
           echo "Running test deployment"
           poetry run -P vyos sync -i ./inventory.yaml -v -m -t       
       - name: Read files content and create PR comment
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           github-token: ${{ secrets.TOKEN }}
           script: |
